@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "<<<ENTER_PACKAGE_NAME>>>"
+name = "nersemble_data"
 version = "0.0.1"
-description = "<<<ENTER_DESCRIPTION>>>"
+description = "Official download kit for the NeRSemble multi-view video face dataset"
 authors = [
     { name = "Tobias Kirschstein", email = "tobias.kirschstein@gmail.com" },
 ]
@@ -20,6 +20,10 @@ classifiers = [
 # urls = { Documentation = "<<<ENTER_LINK_TO_DOCUMENTATION>>>" }
 # Main dependencies
 dependencies = [
+    "tyro",
+    "environs",
+    "elias",
+    "tqdm"
 ]
 
 [project.optional-dependencies]
@@ -28,8 +32,8 @@ dev = [
 ]
 
 [project.scripts]
-# E.g., ns-download-data = "scripts.downloads.download_data:entrypoint"
+nersemble-data = "nersemble_data.scripts.manage_data:main_cli"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["<<<ENTER_PACKAGE_NAME>>>*"]  # Keep the '*', otherwise submodules are not found
+include = ["nersemble_data*"]  # Keep the '*', otherwise submodules are not found
