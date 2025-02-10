@@ -24,7 +24,7 @@ The NeRSemble Dataset is a large-scale multi-view video dataset of facial perfor
 ![static/nersemble_v2_statistics.jpg](static/nersemble_v2_statistics.jpg)
 
 
-# 2. Data Access
+# 2. Data Access & Setup
 1. Request access to the NeRSemble dataset: [https://forms.gle/rYRoGNh2ed51TDWX9](https://forms.gle/rYRoGNh2ed51TDWX9)
 2. Once approved, you will receive a mail with the download link in the form of 
     ```python
