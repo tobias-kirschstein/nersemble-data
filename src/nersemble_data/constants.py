@@ -38,6 +38,11 @@ SEQUENCE_NAMES = [
 ]
 
 ASSETS = {
+    "global":
+        {
+            "metadata_participants": "metadata_participants.csv",
+            "metadata_sequences": "metadata_sequences.csv",
+        },
     "per_person":
         {
             "calibration": "{p_id:03d}/calibration/camera_params.json",
