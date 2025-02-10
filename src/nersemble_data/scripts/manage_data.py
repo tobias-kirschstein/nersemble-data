@@ -156,19 +156,23 @@ def download(
 
 
 @app.command
-def list(participant_id: Optional[int] = None, /):
+def list(participant: Optional[int] = None, /):
     """
-    List available sequences
+    List available participants, or available sequences per participant.
+
+    Parameters
+    ----------
+    participant: If specified, list the available sequences for the specified participant
     """
 
     nersemble_metadata = NeRSembleMetadata()
-    if participant_id is None:
+    if participant is None:
         participant_ids = nersemble_metadata.list_participants()
         print("Available participant_ids:")
         print(participant_ids)
     else:
-        available_sequences = nersemble_metadata.list_sequences_for_participant(participant_id)
-        print(f"Available sequences for participant {participant_id}:")
+        available_sequences = nersemble_metadata.list_sequences_for_participant(participant)
+        print(f"Available sequences for participant {participant}:")
         print(available_sequences)
 
 

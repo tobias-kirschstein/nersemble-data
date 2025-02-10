@@ -23,7 +23,8 @@ dependencies = [
     "tyro",
     "environs",
     "elias",
-    "tqdm"
+    "tqdm",
+    "colour-science"
 ]
 
 [project.optional-dependencies]

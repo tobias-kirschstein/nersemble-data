@@ -25,7 +25,7 @@ class NeRSembleMetadata:
 
     def list_sequences_for_participant(self, participant_id: int) -> List[str]:
         participant_row = self._metadata_sequences[self._metadata_sequences['ID'] == participant_id]
-        available_sequences = participant_row.apply(lambda row: row[row == 'x'].index, axis=1).tolist()[0].tolist()
+        available_sequences = participant_row.apply(lambda row: row[(row == 'x') | (row == 'm')].index, axis=1).tolist()[0].tolist()
         return available_sequences
 
     def list_sequences(self) -> List[str]:
