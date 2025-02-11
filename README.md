@@ -28,11 +28,11 @@ The NeRSemble Dataset is a large-scale multi-view video dataset of facial perfor
 1. Request access to the NeRSemble dataset: [https://forms.gle/rYRoGNh2ed51TDWX9](https://forms.gle/rYRoGNh2ed51TDWX9)
 2. Once approved, you will receive a mail with the download link in the form of 
     ```python
-    NERSEMBLE_BENCHMARK_URL = "..."
+    NERSEMBLE_DATA_URL = "..."
     ```
 3. Create a file at `~/.config/nersemble_data/.env` with following content:
     ```python
-    NERSEMBLE_BENCHMARK_URL = "<<<URL YOU GOT WHEN REQUESTING ACCESS TO NERSEMBLE>>>"
+    NERSEMBLE_DATA_URL = "<<<URL YOU GOT WHEN REQUESTING ACCESS TO NERSEMBLE>>>"
     ```
 4. Install this repository via `pip install nersemble_data@git+ssh://git@github.com/tobias-kirschstein/nersemble-data.git`
 5. Use the download script in this repository to download the parts of the NeRSemble dataset that you need
