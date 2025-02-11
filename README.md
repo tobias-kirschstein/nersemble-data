@@ -34,7 +34,10 @@ The NeRSemble Dataset is a large-scale multi-view video dataset of facial perfor
     ```python
     NERSEMBLE_DATA_URL = "<<<URL YOU GOT WHEN REQUESTING ACCESS TO NERSEMBLE>>>"
     ```
-4. Install this repository via `pip install nersemble_data@git+ssh://git@github.com/tobias-kirschstein/nersemble-data.git`
+4. Install this repository via 
+   ```shell 
+   pip install nersemble_data@git+ssh://git@github.com/tobias-kirschstein/nersemble-data.git
+   ``` 
 5. Use the download script in this repository to download the parts of the NeRSemble dataset that you need
 
 # 3. Download Scripts
