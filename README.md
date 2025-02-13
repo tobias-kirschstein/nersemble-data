@@ -88,7 +88,7 @@ In principle, the dataset contains `#PARTICIPANTS x #SEQUENCES x #CAMERAS` many 
  - `--participant`: select participant(s) to download
  - `--sequence`: select sequence(s) to download
  - `--camera`: select camera(s) to download
- - `--n_workers` Specify how many download should happen in parallel
+ - `--n_workers` Specify how many downloads should happen in parallel
 
 For example, 
 ```shell

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nersemble_data"
-version = "0.0.2"
+version = "0.0.3"
 description = "Official download kit for the NeRSemble multi-view video face dataset"
 authors = [
     { name = "Tobias Kirschstein", email = "tobias.kirschstein@gmail.com" },
@@ -24,7 +24,8 @@ dependencies = [
     "environs",
     "elias",
     "tqdm",
-    "colour-science"
+    "colour-science",
+    "pandas"
 ]
 
 [project.optional-dependencies]
