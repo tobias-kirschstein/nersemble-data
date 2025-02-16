@@ -51,6 +51,10 @@ ASSETS = {
     "per_cam":
         {
             "images": "{p_id:03d}/sequences/{seq_name:}/images/cam_{serial:}.mp4",
+        },
+    "per_person_cam":
+        {
+            "backgrounds": "{p_id:03d}/sequences/BACKGROUND/image_{serial:}.jpg",
         }
 }
 

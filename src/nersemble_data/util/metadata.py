@@ -14,18 +14,21 @@ class NeRSembleMetadata:
         participant_ids = [p_id for p_id in self._metadata_sequences['ID']]
         return participant_ids
 
-    def list_sequences_for_all_participants(self) -> Dict[int, List[str]]:
+    def list_sequences_for_all_participants(self, include_background: bool = False) -> Dict[int, List[str]]:
         participant_ids = self.list_participants()
         sequences_per_participant = dict()
         for participant_id in participant_ids:
-            available_sequences = self.list_sequences_for_participant(participant_id)
+            available_sequences = self.list_sequences_for_participant(participant_id, include_background=include_background)
             sequences_per_participant[participant_id] = available_sequences
 
         return sequences_per_participant
 
-    def list_sequences_for_participant(self, participant_id: int) -> List[str]:
+    def list_sequences_for_participant(self, participant_id: int, include_background: bool = False) -> List[str]:
         participant_row = self._metadata_sequences[self._metadata_sequences['ID'] == participant_id]
         available_sequences = participant_row.apply(lambda row: row[(row == 'x') | (row == 'm')].index, axis=1).tolist()[0].tolist()
+        if not include_background:
+            available_sequences = [seq_name for seq_name in available_sequences if seq_name != 'BACKGROUND']
+
         return available_sequences
 
     def list_sequences(self) -> List[str]:

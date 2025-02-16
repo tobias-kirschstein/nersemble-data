@@ -13,7 +13,7 @@ from nersemble_data.util.security import validate_nersemble_data_url
 
 app = SubcommandApp()
 
-AssetType = Literal["calibration", "color_calibration", "images", "metadata_participants", "metadata_sequences"]
+AssetType = Literal["calibration", "color_calibration", "images", "backgrounds", "metadata_participants", "metadata_sequences"]
 
 
 @app.command
@@ -133,6 +133,14 @@ def download(
                             relative_url = ASSETS['per_cam'][asset]
                             relative_url = relative_url.format(p_id=p_id, seq_name=seq_name, serial=serial)
                             relative_urls.append(relative_url)
+
+            # Assets per-person camera (backgrounds basically)
+            for serial in selected_cameras:
+                for asset in assets:
+                    if asset in ASSETS['per_person_cam']:
+                        relative_url = ASSETS['per_person_cam'][asset]
+                        relative_url = relative_url.format(p_id=p_id, serial=serial)
+                        relative_urls.append(relative_url)
 
         # Global assets
         for asset in assets:

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nersemble_data"
-version = "0.0.3"
+version = "0.0.4"
 description = "Official download kit for the NeRSemble multi-view video face dataset"
 authors = [
     { name = "Tobias Kirschstein", email = "tobias.kirschstein@gmail.com" },
