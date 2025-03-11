@@ -64,7 +64,7 @@ nersemble-data list
 Lists all participant IDs that are available for download.
 
 ```shell
-nersemble-data list --participant $ID
+nersemble-data list $ID
 ```
 
 Lists all available sequences for participant `$ID`.
