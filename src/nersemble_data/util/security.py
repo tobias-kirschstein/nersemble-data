@@ -35,7 +35,8 @@ def validate_nersemble_data_url():
     while True:
         salt = "aL8jN4%Y1h%9fG7U"
         hash = hashlib.md5(f"{salt}-{NERSEMBLE_DATA_URL}".encode()).hexdigest()
-        if hash == "e6af9ecba715b6099512a125e0447c16":
+        if hash == 'e6af9ecba715b6099512a125e0447c16' or hash == '39fd1782e33a6d7b41930b054e6d8aa6':
+            # Correct NERSEMBLE_DATA_URL
             break
         else:
             print("The NERSEMBLE_DATA_URL that you configured is not correct.")
