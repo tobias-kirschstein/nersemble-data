@@ -31,7 +31,7 @@ SEQUENCE_NAMES = [
     "SEN-04-two_plus_seven",
     "SEN-05-glow_eyes_sweet_girl",
     "SEN-06-problems_wise_chief",
-    "SEN-07-fond_note_fried",
+    "SEN-07-fond_note_friend",
     "SEN-08-clothes_and_lodging",
     "SEN-09-frown_events_bad",
     "SEN-10-port_strong_smokey"
