@@ -73,6 +73,9 @@ ASSET_REQUIRED_SEQUENCE = {
     "backgrounds_olat": "BACKGROUND_OLAT",
 }
 
+# Assets that are only downloaded when explicitly requested via --assets
+ASSETS_NOT_DOWNLOADED_BY_DEFAULT = ["backgrounds_olat"]
+
 # Only sentence sequences come with an audio recording
 AUDIO_SEQUENCE_PREFIX = "SEN-"
 

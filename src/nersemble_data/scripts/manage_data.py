@@ -6,7 +6,7 @@ from tqdm import tqdm
 from tyro.extras import SubcommandApp
 
 from nersemble_data.constants import SERIALS_PER_SUBSET, ASSETS, AVERAGE_GB_PER_VIDEO, Subset, ASSET_REQUIRED_SEQUENCE, \
-    AUDIO_SEQUENCE_PREFIX
+    AUDIO_SEQUENCE_PREFIX, ASSETS_NOT_DOWNLOADED_BY_DEFAULT
 from nersemble_data.env import get_data_url
 from nersemble_data.util.download import download_file
 from nersemble_data.util.metadata import NeRSembleMetadata
@@ -63,7 +63,8 @@ def download(
             - all: Download all cameras
             - comma-separated camera serials: E.g., "222200037,222200042" will only download those 2 cameras
     assets:
-        Which assets to download
+        Which assets to download. "all" downloads all assets except the OLAT background images (backgrounds_olat),
+        which have to be requested explicitly, e.g., --assets backgrounds_olat
     """
 
     data_url = get_data_url(subset)
@@ -136,7 +137,8 @@ def download(
         # ----------------------------------------------------------
 
         if assets == 'all':
-            assets = [asset_name for asset_set in ASSETS.values() for asset_name in asset_set.keys()]
+            assets = [asset_name for asset_set in ASSETS.values() for asset_name in asset_set.keys()
+                      if asset_name not in ASSETS_NOT_DOWNLOADED_BY_DEFAULT]
 
         # List of (relative_url, local_relative_path)
         downloads: List[Tuple[str, str]] = []

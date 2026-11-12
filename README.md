@@ -117,7 +117,7 @@ nersemble-data download ${nersemble_folder} --subset hair
 All other options (`--participant`, `--sequence`, `--camera`, `--assets`) work the same way.  
 Differences to the main subset:
  - Recorded with 15 cameras (camera `222200047` is not available)
- - Participants `601` and `602` additionally have background images for the OLAT sequence (`sequences/BACKGROUND_OLAT`, asset `backgrounds_olat`)
+ - Participants `601` and `602` additionally have background images for the OLAT sequence (`sequences/BACKGROUND_OLAT`). These are not downloaded by default, request them via `--assets backgrounds_olat`
  - The full hair subset is roughly 80 GB
 
 Participant IDs of both subsets are disjoint, so both can be downloaded into the same folder. The metadata files of the hair subset are stored as `metadata_participants_hair.csv` and `metadata_sequences_hair.csv`.
