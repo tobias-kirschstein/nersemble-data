@@ -105,7 +105,10 @@ Further options:
 
 ## 3.3. Hair subset
 
+![static/nersemble_v2_hair_sequence_overview.jpg](static/nersemble_v2_hair_sequence_overview.jpg)
+
 Besides the main recordings, NeRSemble contains a **hair subset** with 6 additional participants (IDs `601`-`606`) that focuses on hair motion (`HAIR-*`, `TURNTABLE-*` and `TEST-*` sequences) in addition to a selection of expression, emotion and sentence sequences.
+
 It uses the same access URL as the main dataset. Select it via `--subset hair` (default: `--subset main`):
 
 ```shell
