@@ -1,3 +1,5 @@
+from typing import Literal
+
 SERIALS = ["222200042", "222200044", "222200046", "222200040", "222200036", "222200048", "220700191", "222200041",
            "222200037", "222200038", "222200047", "222200043", "222200049", "222200039", "222200045", "221501007"]
 
@@ -48,6 +50,10 @@ ASSETS = {
             "calibration": "{p_id:03d}/calibration/camera_params.json",
             "color_calibration": "{p_id:03d}/calibration/color_calibration.json"
         },
+    "per_sequence":
+        {
+            "audio": "{p_id:03d}/sequences/{seq_name:}/images/audio_recording.ogg",
+        },
     "per_cam":
         {
             "images": "{p_id:03d}/sequences/{seq_name:}/images/cam_{serial:}.mp4",
@@ -55,9 +61,43 @@ ASSETS = {
     "per_person_cam":
         {
             "backgrounds": "{p_id:03d}/sequences/BACKGROUND/image_{serial:}.jpg",
+            "backgrounds_olat": "{p_id:03d}/sequences/BACKGROUND_OLAT/images/image_{serial:}.jpg",
         }
 }
 
-NERSEMBLE_ACCESS_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScYsXR8NVCi4nvmCbFNL0P9swsGodMnbntUJeFejtuKUMsY7Q/viewform"
+# Sequences that only contain static background images instead of videos
+BACKGROUND_SEQUENCES = ["BACKGROUND", "BACKGROUND_OLAT"]
 
-AVERAGE_GB_PER_VIDEO = 1490 / 170631
+# Assets that only exist for participants that have the specified (background) sequence
+ASSET_REQUIRED_SEQUENCE = {
+    "backgrounds_olat": "BACKGROUND_OLAT",
+}
+
+# Only sentence sequences come with an audio recording
+AUDIO_SEQUENCE_PREFIX = "SEN-"
+
+# ----------------------------------------------------------
+# Subsets
+# ----------------------------------------------------------
+# The NeRSemble dataset consists of several subsets that share the same folder layout:
+#   - main: The original NeRSemble v2 data (participants with expressions, emotions and sentences)
+#   - hair: Additional recordings focusing on hair motion (participants 601+)
+
+Subset = Literal["main", "hair"]
+
+SUBSET_URL_SUFFIXES = {
+    "main": "",
+    "hair": "-hair",
+}
+
+SERIALS_PER_SUBSET = {
+    "main": SERIALS,
+    "hair": [serial for serial in SERIALS if serial != "222200047"],  # Camera 222200047 was not used for the hair subset
+}
+
+AVERAGE_GB_PER_VIDEO = {
+    "main": 1490 / 170631,
+    "hair": 0.039,
+}
+
+NERSEMBLE_ACCESS_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScYsXR8NVCi4nvmCbFNL0P9swsGodMnbntUJeFejtuKUMsY7Q/viewform"

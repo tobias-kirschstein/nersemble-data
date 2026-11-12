@@ -47,9 +47,9 @@ class NeRSembleParticipantDataManager:
         return list(range(self.get_n_timesteps(sequence_name)))
 
     def list_cameras(self, sequence_name: str) -> List[str]:
-        # TODO: Untested
         images_folder = Path(self.get_images_path(sequence_name, "serial")).parent
-        serials = [camera_file.stem.split('_')[1] for camera_file in images_folder.iterdir()]
+        # The images folder can contain other files as well (e.g., audio_recording.ogg), only consider camera videos
+        serials = [camera_file.stem.split('_')[1] for camera_file in images_folder.glob("cam_*.mp4")]
         return serials
 
     def list_sequences(self) -> List[str]:
@@ -103,6 +103,11 @@ class NeRSembleParticipantDataManager:
 
     def get_images_path(self, sequence_name: str, serial: str) -> str:
         relative_path = ASSETS['per_cam']['images'].format(p_id=self._participant_id, seq_name=sequence_name, serial=serial)
+        return f"{self._location}/{relative_path}"
+
+    def get_audio_path(self, sequence_name: str) -> str:
+        # Only available for sentence sequences (SEN-*)
+        relative_path = ASSETS['per_sequence']['audio'].format(p_id=self._participant_id, seq_name=sequence_name)
         return f"{self._location}/{relative_path}"
 
 

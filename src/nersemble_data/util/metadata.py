@@ -1,14 +1,16 @@
-from typing import List, Optional, Dict
+from typing import List, Dict
 
 import pandas as pd
 
-from nersemble_data.env import NERSEMBLE_DATA_URL
+from nersemble_data.constants import BACKGROUND_SEQUENCES, Subset
+from nersemble_data.env import get_data_url
 
 
 class NeRSembleMetadata:
 
-    def __init__(self):
-        self._metadata_sequences = pd.read_csv(f"{NERSEMBLE_DATA_URL}/metadata_sequences.csv", )
+    def __init__(self, subset: Subset = 'main'):
+        self._subset = subset
+        self._metadata_sequences = pd.read_csv(f"{get_data_url(subset)}/metadata_sequences.csv", )
 
     def list_participants(self) -> List[int]:
         participant_ids = [p_id for p_id in self._metadata_sequences['ID']]
@@ -27,9 +29,13 @@ class NeRSembleMetadata:
         participant_row = self._metadata_sequences[self._metadata_sequences['ID'] == participant_id]
         available_sequences = participant_row.apply(lambda row: row[(row == 'x') | (row == 'm')].index, axis=1).tolist()[0].tolist()
         if not include_background:
-            available_sequences = [seq_name for seq_name in available_sequences if seq_name != 'BACKGROUND']
+            available_sequences = [seq_name for seq_name in available_sequences if seq_name not in BACKGROUND_SEQUENCES]
 
         return available_sequences
 
-    def list_sequences(self) -> List[str]:
-        return [seq_name for seq_name in self._metadata_sequences.columns if seq_name not in ['ID', 'wears_glasses']]
+    def list_sequences(self, include_background: bool = False) -> List[str]:
+        sequences = [seq_name for seq_name in self._metadata_sequences.columns if seq_name not in ['ID', 'wears_glasses']]
+        if not include_background:
+            sequences = [seq_name for seq_name in sequences if seq_name not in BACKGROUND_SEQUENCES]
+
+        return sequences

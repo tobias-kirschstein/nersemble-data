@@ -100,6 +100,28 @@ nersemble-data download ${nersemble_folder} --sequence EMO-1-shout+laugh --camer
 ```
 would download all participants but only the `222200037` camera for the `EMO-1-shout+laugh` sequence.
 
+Further options:
+ - `--assets`: select which assets to download, e.g., `--assets images calibration`. Sentence sequences (`SEN-*`) additionally come with an `audio_recording.ogg` (asset `audio`)
+
+## 3.3. Hair subset
+
+Besides the main recordings, NeRSemble contains a **hair subset** with 6 additional participants (IDs `601`-`606`) that focuses on hair motion (`HAIR-*`, `TURNTABLE-*` and `TEST-*` sequences) in addition to a selection of expression, emotion and sentence sequences.
+It uses the same access URL as the main dataset. Select it via `--subset hair` (default: `--subset main`):
+
+```shell
+nersemble-data list --subset hair
+nersemble-data list 601 --subset hair
+nersemble-data download ${nersemble_folder} --subset hair
+```
+
+All other options (`--participant`, `--sequence`, `--camera`, `--assets`) work the same way.  
+Differences to the main subset:
+ - Recorded with 15 cameras (camera `222200047` is not available)
+ - Participants `601` and `602` additionally have background images for the OLAT sequence (`sequences/BACKGROUND_OLAT`, asset `backgrounds_olat`)
+ - The full hair subset is roughly 80 GB
+
+Participant IDs of both subsets are disjoint, so both can be downloaded into the same folder. The metadata files of the hair subset are stored as `metadata_participants_hair.csv` and `metadata_sequences_hair.csv`.
+
 # 4. Usage
 
 The repository also comes with a data manager to facilitate loading single images from the downloaded videos:
